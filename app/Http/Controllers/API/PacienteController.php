@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ActualizarPaciente;
 use App\Http\Requests\GuardarPaciente;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
@@ -31,7 +32,7 @@ class PacienteController extends Controller
         return response()->json([               // retorna una respuesta en JSON
             'res'=>true,
             'msg'=>'Paciente guardado correctamente.'
-        ]);
+        ],200);
     }
 
     /**
@@ -40,9 +41,12 @@ class PacienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Paciente $paciente)        // para enviarle la PK del modelo PACIENTE
     {
-        //
+        return response()->json([                   // Retorna JSON
+            'res' => true,                          // con respuesta TRUE
+            'paciente' => $paciente                 // y los datos del paciente
+        ],200);
     }
 
     /**
@@ -52,9 +56,13 @@ class PacienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ActualizarPaciente $request, Paciente $paciente)
     {
-        //
+        $paciente -> update($request->all());                   // actualizo la información del paciente con la información (validade) del request
+        return response()->json([                               // Retorna JSON
+            'res' => true,                                      // con respuesta TRUE
+            'message' => 'Paciente actualizado correctamente.'
+        ],200);                                                 // código de HTTP 200 quiere decir que todo está correcto
     }
 
     /**
@@ -63,8 +71,12 @@ class PacienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Paciente $paciente)
     {
-        //
+        $paciente -> delete();
+        return response()->json([                               // Retorna JSON
+            'res' => true,                                      // con respuesta TRUE
+            'message' => 'El paciente se eliminó correctamente.'
+        ],200);
     }
 }
