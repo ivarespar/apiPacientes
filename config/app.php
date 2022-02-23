@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',       // cambia a español para que use 'resources/lang/es' para traducir
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'en',  // si no encuentra locale, toma los datos de la carpera 'en' (Inglés)
 
     /*
     |--------------------------------------------------------------------------

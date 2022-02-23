@@ -23,3 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Defino ruta
 // ..:: MéttodoHTTP (identificador de la ruta),[Controlador::class,Función o método dentro del controller]
 Route::get('pacientes',[PacienteController::class,'index']);
+
+// ..:: MéttodoHTTP (identificador de la ruta),[Controlador::class,Función o método dentro del controller]
+Route::post('pacientes',[PacienteController::class,'store']);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GuardarPaciente;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 
@@ -24,9 +25,13 @@ class PacienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GuardarPaciente $request)
     {
-        //
+        Paciente::create($request->all());      // crear instancia de Paciente con validaciones colocadas en Controllers/Requests/GuardarPaciente
+        return response()->json([               // retorna una respuesta en JSON
+            'res'=>true,
+            'msg'=>'Paciente guardado correctamente.'
+        ]);
     }
 
     /**
