@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Lima',   // Define la zona horaria que usa funcion DATE de php
 
     /*
     |--------------------------------------------------------------------------
